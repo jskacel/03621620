@@ -12,3 +12,7 @@
     register: ping_status_basic
     ignore_errors: true
     become: false
+
+  - name: debug
+    ansible.builtin.debug:
+      var: ping_status_basic
