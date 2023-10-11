@@ -1,0 +1,14 @@
+- name: Gather data from all remote nodes
+  hosts: all
+  gather_facts: false
+  become: true
+  ignore_unreachable: true
+
+  tasks:
+  - name: Check basic connectivity
+    ansible.builtin.ping:
+    async: 120
+    poll: 30
+    register: ping_status_basic
+    ignore_errors: true
+    become: false
