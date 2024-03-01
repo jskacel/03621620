@@ -1,0 +1,21 @@
+---
+- name: 'Test playbook to read the content from a file'
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: "Get {{ filepath }} content"
+      command: "cat {{ filepath }}"
+      async: 30
+      pool: 5
+      register: cnt
+
+    - name: "Check if {{ filepath }} content is correct"
+      fail:
+        msg: "{{ filepath }} doesnt have the correct content"
+      when: '"{{ cnt_to_check }}" not in cnt.stdout'
+
+    - name: This is another task
+      debug:
+        msg: "Hello from the other side"
