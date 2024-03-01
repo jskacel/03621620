@@ -14,3 +14,7 @@
       fail:
         msg: "{{ filepath }} doesnt have the correct content"
       when: '"{{ cnt_to_check }}" not in cnt.stdout'
+
+    - name: This is another task
+      debug:
+        msg: "Hello from the other side"
