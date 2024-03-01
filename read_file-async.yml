@@ -8,7 +8,7 @@
     - name: "Get {{ filepath }} content"
       command: "cat {{ filepath }}"
       async: 30
-      pool: 5
+      poll: 5
       register: cnt
 
     - name: "Check if {{ filepath }} content is correct"
