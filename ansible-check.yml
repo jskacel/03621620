@@ -1,0 +1,12 @@
+- name: Check ansible config
+  hosts: localhost
+
+  tasks:
+  - name: Check ansible config
+    ansible.builtin.command:
+      cmd: ansible-config dump --only-changed
+    register: ansible_output
+
+  - name: Print it
+    ansible.builtin.debug:
+      var: ansible_output
