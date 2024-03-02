@@ -1,0 +1,11 @@
+---
+- name: Powershell Sleep
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Sleep
+      ansible.windows.win_powershell:
+        script: |
+          echo "Hello World"
+          Start-Sleep -Seconds 120
